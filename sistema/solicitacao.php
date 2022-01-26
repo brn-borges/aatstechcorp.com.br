@@ -390,7 +390,7 @@ mysqli_close($connect);
 
                     <!-- Content Row -->
                     <div class="row">
-
+                    
                         <!-- Earnings (Monthly) Card Example -->
                     </div>
 
@@ -491,7 +491,7 @@ mysqli_close($connect);
                 </div>
                 <div class="modal-body">Selecione "Sair" caso realmente deseje sair da sua sessão atual.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-outline-dark" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-outline-dark" href="logout.php">Sair</a>
                 </div>
             </div>

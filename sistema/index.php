@@ -20,7 +20,6 @@ $sql = "SELECT COUNT(id_form) AS total FROM form";
 $qtdeduvida = mysqli_query($connect, $sql);
 $qtde = mysqli_fetch_assoc($qtdeduvida);
 
-mysqli_close($connect);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -90,8 +89,8 @@ mysqli_close($connect);
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opções:</h6>
-                        <a class="collapse-item" href="buttons.html">Criar Produto</a>
-                        <a class="collapse-item" href="cards.html">Exbir Produtos</a>
+                        <a class="collapse-item" href="#" data-toggle="modal" data-target="#criarProdutoModal">Criar Produto</a>
+                        <a class="collapse-item" href="#" data-toggle="modal" data-target="#exibirProdutoModal">Exbir Produtos</a>
                     </div>
                 </div>
             </li>
@@ -595,9 +594,107 @@ mysqli_close($connect);
                 </div>
                 <div class="modal-body">Selecione "Sair" caso realmente deseje sair da sua sessão atual.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-outline-dark" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-outline-dark" href="logout.php">Sair</a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="criarProdutoModal" tabindex="-1" aria-labelledby="criarProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="criarProdutoLabel">Cadastrar Produto</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="cad-produto-form">
+                        <span id="msgAlertaErroCad"></span>
+                        <span id="msgAlerta"></span>
+                        <div class="mb-3">
+                            <label for="nome" class="col-form-label">Produto:</label>
+                            <input type="text" name="nome_produt" class="form-control" id="nome_produt" placeholder="Digite o Nome do Produto">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nome" class="col-form-label">Qtde:</label>
+                            <input type="number" name="qtde_produt" class="form-control" id="qtde_produt" placeholder="Informe a Quantidade Total">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Valor" class="col-form-label">Valor Unitario R$:</label>
+                            <input type="text" name="valor_produt" class="form-control" id="valor_produt" placeholder="Digite o Valor Unitario em R$.">
+                        </div>
+                        <div class="mb-3">
+                            <label for="text" class="col-form-label">Descrição Produto:</label>
+                            <textarea type="text" name="desc_produt" class="form-control" id="desc_produt" placeholder="Digite há descrição"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fechar</button>
+                            <input type="submit" class="btn btn-outline-success" id="cad-produto-btn" value="Cadastrar" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exibirProdutoModal" tabindex="-1" aria-labelledby="exibirProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exibirProdutoLabel">Exbir Produtos</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="msgAlertaErroCad"></span>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <span class="listar-Produtos"></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fechar</button>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="visProdutoModal" tabindex="-1" aria-labelledby="visProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="visProdutoModalLabel">Detalhes do Usuário</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <span id="msgAlertaErroVis"></span>
+                    <dl class="row">
+                        <dt class="col-sm-3">Cod.:</dt>
+                        <dd class="col-sm-9"><span id="idProduto"></span></dd>
+
+                        <dt class="col-sm-3">Produto:</dt>
+                        <dd class="col-sm-9"><span id="nomeProduto"></span></dd>
+
+                        <dt class="col-sm-3">Qtde:</dt>
+                        <dd class="col-sm-9"><span id="qtdeProduto"></span></dd>
+
+                        <dt class="col-sm-3">Valor: R$</dt>
+                        <dd class="col-sm-9"><span id="valorProduto"></span></dd>
+
+                        <dt class="col-sm-3">Descrição do Produto:</dt>
+                        <dd class="col-sm-9"><span id="descricaoProduto"></span></dd>
+
+                    </dl>
+                </div>
+
             </div>
         </div>
     </div>
@@ -618,6 +715,8 @@ mysqli_close($connect);
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="js/custom.js"></script>
 
 </body>
 
