@@ -159,13 +159,13 @@ sup {
 }
 
 a {
-  color: #4e73df;
+  color: #04cb9a;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #224abe;
+  color: #04cb9a;
   text-decoration: underline;
 }
 
@@ -1862,7 +1862,7 @@ pre code {
   background-color: #fff;
   border-color: #bac8f3;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+  box-shadow: 0 0 0 0.2rem #04cb99a4;
 }
 
 .form-control::-webkit-input-placeholder {
@@ -11287,3 +11287,6 @@ body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
 
+.space{
+    margin: 0 15px !important;
+}

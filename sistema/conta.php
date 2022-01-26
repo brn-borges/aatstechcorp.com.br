@@ -23,6 +23,7 @@ $contascriadas = mysqli_query($connect, $sql);
 $sql = "SELECT COUNT(id_user) AS total FROM user";
 $qtdeuser = mysqli_query($connect, $sql);
 $qtde = mysqli_fetch_assoc($qtdeuser);
+
 mysqli_close($connect);
 ?>
 <!DOCTYPE html>
@@ -422,6 +423,7 @@ mysqli_close($connect);
                                                 <th>Usuário</th>
                                                 <th>Celular</th>
                                                 <th>E-mail</th>
+                                                <th>Opções</th>
                                              </tr>
                                         </thead>
                                         <tbody>
@@ -429,7 +431,12 @@ mysqli_close($connect);
                                                 <?php 
                                                     while($row = mysqli_fetch_array($contascriadas)){ 
                                                     print "<td style='text-align: center; 
-                                                    vertical-align: middle;'>".$row['id_user'] . "</td><td>" . $row['nome_user'] . "</td><td>" . $row['telefone_user']. "</td><td> " . $row['email_user'] . "</td> </tr>" ; }
+                                                    vertical-align: middle;'>".$row['id_user'] . "</td><td>" . $row['nome_user'] . "</td><td>" . $row['telefone_user']. "</td><td> " . $row['email_user'] . "</td> <td> 
+                                                    <button class='btn btn-outline-dark btn-user btn-block' type='submit' name='btn-editar'>
+                                                    <i class='fas fa-download fa-sm text-dark-50'></i> Editar </button>
+                                                    
+                                                    <button class='btn btn-outline-dark btn-user btn-block' type='submit' name='btn-excluir'>
+                                                    <i class='fas fa-download fa-sm text-dark-50'></i> Excluir </div> </td></tr>" ; }
                                                     ?>
                                         </tbody>
                                         </table>
