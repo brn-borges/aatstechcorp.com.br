@@ -124,19 +124,12 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                <a class="nav-link collapsed" href="solicitacao.php"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Dúvidas ou Sugestões</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opções</h6>
-                        <a class="collapse-item" href="login.html">Dúvidas</a>
-                        <a class="collapse-item" href="register.html">Sugestões</a>
-                        <a class="collapse-item" href="solicitacao.php">Exbir Dúvidas/Sugestões</a>
-                    </div>
-                </div>
+                
             </li>
 
             <!-- Nav Item - Charts -->
