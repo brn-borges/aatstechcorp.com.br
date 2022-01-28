@@ -32,7 +32,7 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard - Aatstech</title>
+    <title>Produtos - Aatstech</title>
     <link rel="icon" type="image/x-icon" href="../assets/images/logo-b.png"/>
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,7 +65,7 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -80,8 +80,9 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="visualizar-produto.php" >
+            <li class="nav-item active">
+                <a class="nav-link collapsed" href="#" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-bars"></i>
                     <span>Produtos</span>
                 </a>
@@ -90,7 +91,6 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
                         <h6 class="collapse-header">Opções:</h6>
                         <a class="collapse-item" href="#" data-toggle="modal" data-target="#criarProdutoModal">Criar Produto</a>
                         <a class="collapse-item" href="#" data-toggle="modal" data-target="#exibirProdutoModal">Exbir Produtos</a>
-                        <a class="collapse-item" href="visualizar-produto.php">Vendas Realizadas</a>
                     </div>
                 </div> -->
             </li>
@@ -160,13 +160,6 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
-            <!-- Sidebar Message -->
-            <!--<div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>Aatstech Corporation</strong> vem com recursos premium, componentes e muito mais! !</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div> -->
 
         </ul>
         <!-- End of Sidebar -->
@@ -349,7 +342,7 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, <?php echo $dados['nome_user'] . "!"; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $dados['nome_user']; ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -375,188 +368,31 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
                                 </a>
                             </div>
                         </li>
-
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
+ 
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-outline-dark shadow-sm"><i
-                                class="fas fa-download fa-sm text-dark-50"></i> Gerar Relátorio</a>
+                        <h1 class="h3 mb-0 text-gray-800">Produtos</h1>
+                        <a type="button" class="d-none d-sm-inline-block btn btn-sm btn-outline-dark shadow-sm" data-toggle="modal" data-target="#criarProdutoModal">
+                        Cadastrar Produto</a>
                     </div>
 
-                    <!-- Content Row -->
                     <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Vendas Pendentes</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
+                       
+                    <div class="modal-body">
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <span class="listar-Produtos"></span>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Vendas Realizadas</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Vendas Concluidas
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">20</div>
-                                                </div>
-                                                <!--<div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>-->
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Dúvidas ou Sugestões</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $qtde['total']; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </div>    
                     </div>
 
-                    <!-- Content Row -->
-
-                    <div class="row">
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Valor total de vendas</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Estatisticas de Satisfação</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Informações:</div>
-                                            <a class="dropdown-item" href="#">Teste</a>
-                                            <a class="dropdown-item" href="#">Teste</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Mais Configurações</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Ruim
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Médio
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Otimo
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
@@ -600,23 +436,143 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
             </div>
         </div>
     </div>
- 
+
+    <div class="modal fade" id="criarProdutoModal" tabindex="-1" aria-labelledby="criarProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="criarProdutoLabel">Cadastrar Produto</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="cad-produto-form">
+                        <span id="msgAlertaErroCad"></span>
+                        <span id="msgAlerta"></span>
+                        <div class="mb-3">
+                            <label for="nome" class="col-form-label">Produto:</label>
+                            <input type="text" name="nome_produt" class="form-control" id="nome_produt" placeholder="Digite o Nome do Produto">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nome" class="col-form-label">Qtde:</label>
+                            <input type="number" name="qtde_produt" class="form-control" id="qtde_produt" placeholder="Informe a Quantidade Total">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Valor" class="col-form-label">Valor Unitario R$:</label>
+                            <input type="text" name="valor_produt" class="form-control" id="valor_produt" placeholder="Digite o Valor Unitario em R$.">
+                        </div>
+                        <div class="mb-3">
+                            <label for="text" class="col-form-label">Descrição Produto:</label>
+                            <textarea type="text" name="desc_produt" class="form-control" id="desc_produt" placeholder="Digite a Descrição do Produto"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-outline-success" id="cad-produto-btn" value="Cadastrar" />
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="visProdutoModal" tabindex="-1" aria-labelledby="visProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="visProdutoLabel">Detalhes do Produto</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <span id="msgAlertaErroVis"></span>
+                    <dl class="row">
+                        <dt class="col-sm-3">Cod.:</dt>
+                        <dd class="col-sm-9"><span id="idProduto"></span></dd>
+
+                        <dt class="col-sm-3">Produto:</dt>
+                        <dd class="col-sm-9"><span id="nomeProduto"></span></dd>
+
+                        <dt class="col-sm-3">Qtde:</dt>
+                        <dd class="col-sm-9"><span id="qtdeProduto"></span></dd>
+
+                        <dt class="col-sm-3">Valor: R$</dt>
+                        <dd class="col-sm-9"><span id="valorProduto"></span></dd>
+
+                        <dt class="col-sm-3">Descrição do Produto:</dt>
+                        <dd class="col-sm-9"><span id="descricaoProduto"></span></dd>
+
+                    </dl>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editProdutoModal" tabindex="-1" aria-labelledby="editProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProdutoModalLabel">Editar Produto</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-produto-form">
+                        <span id="msgAlertaErroEdit"></span>
+
+                        <input type="hidden" name="id_produt" id="editid">
+                        <div class="mb-3">
+                            <label for="nome" class="col-form-label">Produto:</label>
+                            <input type="text" name="nome_produt" class="form-control" id="editnome" placeholder="Digite o Nome do Produto">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="col-form-label">Qtde.:</label>
+                            <input type="number" name="qtde_produt" class="form-control" id="editqtde" placeholder="Digite a Quantidade">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tel" class="col-form-label">Valor Unitario R$:</label>
+                            <input type="text" name="valor_produt" class="form-control" id="editvalor" placeholder="Digite o Valor Unitario" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="text" class="col-form-label">Descrição Produto:</label>
+                            <textarea type="text" name="desc_produt" class="form-control" id="editdesc" placeholder="Digite a Descrição do Produto"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                             <input type="submit" class="btn btn-outline-dark btn-sm" id="edit-produto-btn" value="Salvar" />
+                            <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fechar</button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="ApagarProdutoModal" tabindex="-1" role="dialog" aria-labelledby="ApagarProdutoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document" id="apagarProduto">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ApagarProdutoModalLabel">Deseja realmente sair?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Selecione "Apagar" caso realmente deseje excluir o Produto seleciona.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-dark" type="button" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-dark" id="excluir-produto-btn">Apagar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="js/custom.js"></script>
 

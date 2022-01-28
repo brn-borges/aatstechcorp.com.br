@@ -2909,12 +2909,12 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #4e73df;
+  color: #04cb9a;
   text-decoration: none;
 }
 
 .btn-link:hover {
-  color: #224abe;
+  color: #04cb99be;
   text-decoration: underline;
 }
 
@@ -3207,7 +3207,7 @@ input[type="button"].btn-block {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #4e73df;
+  background-color: #04cb9a;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {

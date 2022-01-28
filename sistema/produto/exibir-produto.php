@@ -31,9 +31,9 @@ if (!empty($pagina)) {
                     <td>$nome_produt</td>
                     <td>$qtde_produt</td>
                     <td>
-                        <button id='$id_produt' class='btn btn-outline-primary btn-sm' onclick='visProduto($id_produt)'>Visualizar</button>
+                        <button id='$id_produt' class='btn btn-outline-dark btn-sm' onclick='visProduto($id_produt)'>Visualizar</button>
 
-                        <button id='$id_produt' class='btn btn-outline-warning btn-sm' onclick='editUsuarioDados($id_produt)'>Editar</button>
+                        <button id='$id_produt' class='btn btn-outline-dark btn-sm' onclick='editProduto($id_produt)'>Editar</button>
 
                         <button id='$id_produt' class='btn btn-outline-danger btn-sm' onclick='apagarProduto($id_produt)'>Apagar</button>
                     </td>
