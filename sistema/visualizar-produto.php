@@ -301,10 +301,10 @@ mysqli_close($connect);
 
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <button class="dropdown-item" onclick="editPerfil(<?php echo $id_user;?>)">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
-                                </a>
+                                </button>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Configurações
@@ -363,6 +363,53 @@ mysqli_close($connect);
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <div class="modal fade" id="editPerfilModal" tabindex="-1" aria-labelledby="editPerfilModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPerfilModalLabel">Editar Perfil</h5>
+                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-perfil-form">
+                        <span id="msgAlertaErroEdit"></span>
+                        <span id="msgAlerta"></span>
+                        <input type="hidden" name="id_user" id="editIdUser">
+                        <div class="mb-3">
+                            
+                            <label for="nome" class="col-form-label">Nome:</label>
+                            <input type="text" name="nome_user" class="form-control" id="editNomeUser" placeholder="Nome Completo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cel" class="col-form-label">Celular:</label>
+                            <input type="cel" name="telefone_user" class="form-control" id="editTelefoneUser" placeholder="Celular" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                            
+                        </div>
+                        <div class="mb-3">
+                            <label for="Email" class="col-form-label">E-mail:</label>
+                            <input type="email" name="email_user" class="form-control" id="editEmailUser" placeholder="E-mail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="col-form-label">Senha: </label>
+                            <input type="password" name="senha_user" class="form-control" id="editSenhaUser" placeholder="Senha">
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="col-form-label">Repetir Senha: </label>
+                            <input type="password" name="senha_repetir" class="form-control" id="editSenhaRepetir" placeholder="Repetir Senha">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-outline-success btn-sm" id="edit-conta-btn" value="Alterar" />
+                            <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -413,7 +460,7 @@ mysqli_close($connect);
                         </div>
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-outline-success btn-sm" id="cad-produto-btn" value="Cadastrar" />
-                            <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
                 </div>
@@ -499,7 +546,7 @@ mysqli_close($connect);
     <script src="js/sb-admin-2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="js/produto.js"></script>
-
+    <script src="js/perfil.js"></script>
 </body>
 
 </html>
