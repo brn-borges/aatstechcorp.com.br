@@ -1,11 +1,11 @@
 <?php
-include_once "bd.php";
+include_once "../sql/bd.php";
 
 session_start();
 
 //Verificação
 if(!isset($_SESSION['logado'])):
-    header('Location: login.php');
+    header('Location: ../login.php');
 endif;
 
 $id_produt = filter_input(INPUT_GET, "id_produt", FILTER_SANITIZE_NUMBER_INT);

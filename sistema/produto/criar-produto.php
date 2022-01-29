@@ -1,12 +1,12 @@
 <?php
 
-include_once "bd.php";
+include_once "../sql/bd.php";
 
 session_start();
 
 //Verificação
 if(!isset($_SESSION['logado'])):
-    header('Location: login.php');
+    header('Location: ../login.php');
 endif;
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);

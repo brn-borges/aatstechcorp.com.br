@@ -1,10 +1,10 @@
 <?php
-include_once "bd.php";
+include_once "../sql/bd.php";
 session_start();
 
 //Verificação
 if(!isset($_SESSION['logado'])):
-    header('Location: login.php');
+    header('Location: ../login.php');
 endif;
 
 $pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
