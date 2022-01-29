@@ -1,8 +1,8 @@
 const listConta = document.querySelector(".listar-Conta");
 const cadForm = document.getElementById("cad-conta-form");
-// const editForm = document.getElementById("edit-produto-form");
+const editForm = document.getElementById("edit-conta-form");
 const msgAlertaErroCad = document.getElementById("msgAlertaErroCad");
-// const msgAlertaErroEdit = document.getElementById("msgAlertaErroEdit");
+const msgAlertaErroEdit = document.getElementById("msgAlertaErroEdit");
 const msgAlerta = document.getElementById("msgAlerta");
 const cadModal = new bootstrap.Modal(document.getElementById("criarContaModal"));
 
@@ -104,63 +104,64 @@ cadForm.addEventListener("submit", async (e) => {
 
 }
 
-// async function editProduto(id_produt) {
-//     msgAlertaErroEdit.innerHTML = "";
+ async function editConta(id_user) {
+     msgAlertaErroEdit.innerHTML = "";
 
-//     const dados = await fetch('produto/ver-produto.php?id_produt=' + id_produt);
-//     const resposta = await dados.json();
-//     //console.log(resposta);
+    const dados = await fetch('contas/ver-conta.php?id_user=' + id_user);
+    const resposta = await dados.json();
+     //console.log(resposta);
 
-//     if (resposta['erro']) {
-//         msgAlerta.innerHTML = resposta['msg'];
-//         setTimeout(() => {
-//             msgAlerta.innerHTML = "";
-//         }, 5000)
-//     } else {
-//         const editModal = new bootstrap.Modal(document.getElementById("editProdutoModal"));
-//         editModal.show();
-//         document.getElementById("editid").value = resposta['dados'].id_produt;
-//         document.getElementById("editnome").value  = resposta['dados'].nome_produt;
-//         document.getElementById("editqtde").value  = resposta['dados'].qtde_produt;
-//         document.getElementById("editvalor").value  = resposta['dados'].valor_produt;
-//         document.getElementById("editdesc").value  = resposta['dados'].desc_produt;
-//     }
-// }
+     if (resposta['erro']) {
+         msgAlerta.innerHTML = resposta['msg'];
+         setTimeout(() => {
+             msgAlerta.innerHTML = "";
+         }, 5000)
+     } else {
+         const editModal = new bootstrap.Modal(document.getElementById("editContaModal"));
+         editModal.show();
+         document.getElementById("editIdUser").value = resposta['dados'].id_user;
+         document.getElementById("editNomeUser").value  = resposta['dados'].nome_user;
+         document.getElementById("editTelefoneUser").value  = resposta['dados'].telefone_user;
+         document.getElementById("editEmailUser").value  = resposta['dados'].email_user;
+         document.getElementById("editSenhaUser").value  = resposta['dados'].senha_user;
+         document.getElementById("editSenhaRepetir").value  = resposta['dados'].senha_user;
+     }
+ }
 
-// editForm.addEventListener("submit", async (e) => {
-//     e.preventDefault();
+ editForm.addEventListener("submit", async (e) => {
+     e.preventDefault();
 
-//     document.getElementById("edit-produto-btn").value = "Salvando...";
+     document.getElementById("edit-conta-btn").value = "Salvando...";
 
-//     const dadosForm = new FormData(editForm);
-//     //console.log(dadosForm);
-//     /*for (var dadosFormEdit of dadosForm.entries()){
-//         console.log(dadosFormEdit[0] + " - " + dadosFormEdit[1]);
-//     }*/
+     const dadosForm = new FormData(editForm);
+     //console.log(dadosForm);
+     /*for (var dadosFormEdit of dadosForm.entries()){
+         console.log(dadosFormEdit[0] + " - " + dadosFormEdit[1]);
+     }*/
 
-//     const dados = await fetch("produto/editar-produto.php", {
-//         method: "POST",
-//         body: dadosForm
-//     });
+     const dados = await fetch("contas/editar-conta.php", {
+         method: "POST",
+         body: dadosForm
+     });
 
-//     const resposta = await dados.json();
-//     //console.log(resposta);
+     const resposta = await dados.json();
+     //console.log(resposta);
 
-//     if (resposta['erro']) {
-//         msgAlertaErroEdit.innerHTML = resposta['msg'];
-//         setTimeout(() => {
-//             msgAlertaErroEdit.innerHTML = "";
-//         }, 5000)
-//     } else {
-//         msgAlertaErroEdit.innerHTML = resposta['msg'];
-//         setTimeout(() => {
-//             msgAlertaErroEdit.innerHTML = "";
-//         }, 5000)
-//         listarProdutos(1);
-//     }
+     if (resposta['erro']) {
+         msgAlertaErroEdit.innerHTML = resposta['msg'];
+         setTimeout(() => {
+             msgAlertaErroEdit.innerHTML = "";
+         }, 5000)
+     } else {
+         msgAlertaErroEdit.innerHTML = resposta['msg'];
+         setTimeout(() => {
+             msgAlertaErroEdit.innerHTML = "";
+         }, 5000)
+         listarConta(1);
+     }
 
-//     document.getElementById("edit-produto-btn").value = "Salvar";
-// });
+    document.getElementById("edit-conta-btn").value = "Alterar";
+ });
 
 async function apagarConta(id_user) {
 

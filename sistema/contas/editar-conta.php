@@ -11,30 +11,34 @@ include_once "../sql/bd.php";
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-if (empty($dados['id_produt'])) {
+if (empty($dados['id_user'])) {
     $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Tente mais tarde!</div>"];
-} elseif (empty($dados['nome_produt'])) {
+} elseif (empty($dados['nome_user'])) {
     $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Nome!</div>"];
-} elseif (empty($dados['qtde_produt'])) {
-    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Quantidade!</div>"];
-} elseif (empty($dados['valor_produt'])) {
-    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Valor Unitário!</div>"];
-} elseif (empty($dados['desc_produt'])) {
-    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Duvida!</div>"];
+} elseif (empty($dados['telefone_user'])) {
+    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Telefone!</div>"];
+} elseif (empty($dados['email_user'])) {
+    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo E-mail!</div>"];
+} elseif (empty($dados['senha_user'])) {
+    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Senha!</div>"];
+} elseif (empty($dados['senha_repetir'])) {
+    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Repetir Senha!</div>"];
+} elseif (($dados['senha_repetir']) !== ($dados['senha_user'])) {
+    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher os campos Senha e Repetir seja Iguais!</div>"];
 } else {
-    $query_produto= "UPDATE produt SET nome_produt=:nome_produt, qtde_produt=:qtde_produt, valor_produt=:valor_produt, desc_produt=:desc_produt WHERE id_produt=:id_produt";
+    $query_usuario= "UPDATE user SET nome_user=:nome_user, telefone_user=:telefone_user, email_user=:email_user, senha_user=md5(:senha_user) WHERE id_user=:id_user";
     
-    $edit_produto = $conn->prepare($query_produto);
-    $edit_produto->bindParam(':nome_produt', $dados['nome_produt']);
-    $edit_produto->bindParam(':qtde_produt', $dados['qtde_produt']);
-    $edit_produto->bindParam(':valor_produt', $dados['valor_produt']);
-    $edit_produto->bindParam(':desc_produt', $dados['desc_produt']);
-    $edit_produto->bindParam(':id_produt', $dados['id_produt']);
+    $edit_usuario = $conn->prepare($query_usuario);
+    $edit_usuario->bindParam(':nome_user', $dados['nome_user']);
+    $edit_usuario->bindParam(':telefone_user', $dados['telefone_user']);
+    $edit_usuario->bindParam(':email_user', $dados['email_user']);
+    $edit_usuario->bindParam(':senha_user', $dados['senha_user']);
+    $edit_usuario->bindParam(':id_user', $dados['id_user']);
 
-    if ($edit_produto->execute()) {
-        $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Produto editado com sucesso!</div>"];
+    if ($edit_usuario->execute()) {
+        $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Conta editada com sucesso!</div>"];
     } else {
-        $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Produto não editado com sucesso!</div>"];
+        $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Conta não editada com sucesso!</div>"];
     }
 }
 

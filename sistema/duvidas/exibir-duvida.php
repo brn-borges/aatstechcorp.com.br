@@ -12,7 +12,7 @@ $pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
 if (!empty($pagina)) {
 
     //Calcular o inicio visualização
-    $qnt_result_pg = 40; //Quantidade de registro por página
+    $qnt_result_pg = 10; //Quantidade de registro por página
     $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
     $query_duvida = "SELECT id_form, nome_form, email_form, telefone_form, duvida_form  FROM form ORDER BY id_form DESC LIMIT $inicio, $qnt_result_pg";
