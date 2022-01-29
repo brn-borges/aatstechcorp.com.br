@@ -13,7 +13,7 @@ $pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
 if (!empty($pagina)) {
 
     //Calcular o inicio visualização
-    $qnt_result_pg = 5; //Quantidade de registro por página
+    $qnt_result_pg = 4; //Quantidade de registro por página
     $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
     $query_produto = "SELECT id_produt, nome_produt, qtde_produt, valor_produt, desc_produt FROM produt ORDER BY id_produt DESC LIMIT $inicio, $qnt_result_pg";

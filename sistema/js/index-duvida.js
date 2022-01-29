@@ -47,7 +47,7 @@ cadForm.addEventListener("submit", async (e) => {
         } else {
             msgAlerta.innerHTML = resposta['msg'];
             setTimeout(() => {
-                msgAlertaErroCad.innerHTML = "";
+                msgAlerta.innerHTML = "";
             }, 5000)
             cadForm.reset();
             cadModal.hide();

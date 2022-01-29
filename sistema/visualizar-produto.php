@@ -1,6 +1,6 @@
 <?php
 // Conexão
-require_once 'bd.php';
+require_once '../sistema/sql/bd.php';
 
 //Sessão
 session_start();
@@ -401,11 +401,11 @@ mysqli_close($connect);
                         </div>
                         <div class="mb-3">
                             <label for="Qtde" class="col-form-label">Qtde:</label>
-                            <input type="text" name="qtde_produt" class="form-control" id="qtde_produt" placeholder="Quantidade Total">
+                            <input type="text" name="qtde_produt" class="form-control" id="qtde_produt" placeholder="Quantidade Total" onkeyup="somenteNumeros(this);" maxlength="5">
                         </div>
                         <div class="mb-3">
                             <label for="Valor" class="col-form-label">Valor Unitário R$:</label>
-                            <input type="text" name="valor_produt" class="form-control" id="valor_produt" placeholder="Valor Unitário R$">
+                            <input type="text" name="valor_produt" class="form-control" id="valor_produt" placeholder="Valor Unitário R$" onKeyPress="return(moeda(this,'.',',',event))">
                         </div>
                         <div class="mb-3">
                             <label for="text" class="col-form-label">Descrição Produto:</label>
@@ -472,11 +472,11 @@ mysqli_close($connect);
                         </div>
                         <div class="mb-3">
                             <label for="qtde" class="col-form-label">Qtde.:</label>
-                            <input type="text" name="qtde_produt" class="form-control" id="editqtde" placeholder="Quantidade Total">
+                            <input type="text" name="qtde_produt" class="form-control" id="editqtde" placeholder="Quantidade Total" onkeyup="somenteNumeros(this);" maxlength="5">
                         </div>
                         <div class="mb-3">
                             <label for="tel" class="col-form-label">Valor Unitário R$:</label>
-                            <input type="text" name="valor_produt" class="form-control" id="editvalor" placeholder="Valor Unitário R$" >
+                            <input type="text" name="valor_produt" class="form-control" id="editvalor" placeholder="Valor Unitário R$" onKeyPress="return(moeda(this,'.',',',event))">
                         </div>
                         <div class="mb-3">
                             <label for="text" class="col-form-label">Descrição Produto:</label>

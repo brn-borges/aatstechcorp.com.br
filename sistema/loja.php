@@ -1,6 +1,6 @@
 <?php
 // Conexão
-require_once 'bd.php';
+require_once '../sistema/sql/bd.php';
 
 //Sessão
 session_start();

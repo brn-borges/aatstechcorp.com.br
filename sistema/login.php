@@ -1,6 +1,6 @@
 <?php
 // Conexão
-require_once 'bd.php';
+require_once '../sistema/sql/bd.php';
 
 //Sessão
 session_start();
@@ -12,7 +12,7 @@ if(isset($_POST['btn-entrar'])):
     $senha_user = mysqli_escape_string($connect, $_POST['senha_user']);
 
     if(empty($email_user) or empty($senha_user)):
-        $erros[] = "O campo E-mail ou Senha precisa ser preenchido!";
+        $erros[] = "<div class='alert alert-danger' role='alert'>O campo E-mail ou Senha precisa ser preenchido!</div>";
     else: 
         $sql = "SELECT email_user FROM user WHERE email_user = '$email_user'";
         $resultado = mysqli_query($connect, $sql);
@@ -29,13 +29,14 @@ if(isset($_POST['btn-entrar'])):
                 $_SESSION['id_user'] = $dados['id_user'];
                 header('Location:index.php');
             else:
-                $erros[] = "E-mail ou Senha Incorreta!";
+                $erros[] = "<div class='alert alert-danger' role='alert'>E-mail ou Senha Incorreto!</div>";
             endif;
         else:
-            $erros[] = "Usuário Inexistente!";
+            $erros[] = "<div class='alert alert-danger' role='alert'>Usuário Inválido!</div>";
         endif;
     endif;
 endif;
+
 ?>
 
 <!DOCTYPE html>
@@ -50,14 +51,12 @@ endif;
     <meta name="author" content="">
 
     <title>Aatstech Corporation - Login</title>
-    <link rel="icon" type="image/x-icon" href="../assets/images/logo-b.png"/>
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo-b.png"/>
+  
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
     <link href="css/system.css" rel="stylesheet">
 
 </head>
@@ -66,16 +65,13 @@ endif;
 
     <div class="container">
 
-        <!-- Outer Row -->
         <div class="row justify-content-center">
 
             <div class="col-xl-5 col-lg-12 col-md-9">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <!--<div class="col-lg-6 d-none d-lg-block bg-login-image login-image"></div> -->
                             <div class="col-lg-12">
                                 <div class="p-4">
                                     <div class="text-center"> <a href="../index.php">
@@ -84,7 +80,7 @@ endif;
                                         <?php
                                              if(!empty($erros)):
                                                 foreach($erros as $erro):
-                                                echo "<h6 style='color: red;'>". $erro ."</h6>";
+                                                echo  $erro;
                                             endforeach;
                                             endif;
                                         ?>
@@ -136,14 +132,9 @@ endif;
 
     </div>
 
-    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
 </body>

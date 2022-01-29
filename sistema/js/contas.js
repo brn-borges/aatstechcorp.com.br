@@ -17,7 +17,7 @@ listarConta(1);
 cadForm.addEventListener("submit", async (e) => {
      e.preventDefault();
 
-     document.getElementById("cad-conta-btn").value = "Salvou";
+     document.getElementById("cad-conta-btn").value = "Salvando...";
    
      if (document.getElementById("nome_user").value === "") {
          msgAlertaErroCad.innerHTML = "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Nome!</div>";
@@ -69,7 +69,7 @@ cadForm.addEventListener("submit", async (e) => {
              msgAlerta.innerHTML = resposta['msg'];
              setTimeout(() => {
                  msgAlerta.innerHTML = "";
-             }, 5000)
+            }, 5000)
            
              cadForm.reset();
              cadModal.hide();

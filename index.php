@@ -1,6 +1,6 @@
 <?php
 // Conexão
-require_once './sistema/bd.php';
+require_once './sistema/sql/bd.php';
 
 //Sessão
 session_start();
@@ -18,23 +18,22 @@ mysqli_close($connect);
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+
         <title>Aatstech Corporation</title>
-        <!-- Favicon-->
+
         <link rel="icon" type="image/x-icon" href="assets/images/logo-b.png"/>
-        <!-- Bootstrap Icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-        <!-- SimpleLightbox plugin CSS-->
+
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
+
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     </head>
     <body id="page-top">
-        <!-- Navigation-->
+    
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#page-top"><img class="" src="assets/images/logo-c.png" width="150" alt="..." /></a>
@@ -58,7 +57,6 @@ mysqli_close($connect);
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
         <header class="masthead">
             <div class="container px-4 px-lg-5 h-100">
                 <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
@@ -88,7 +86,7 @@ mysqli_close($connect);
                 </div>
             </div>
         </section>
-        <!-- Services-->
+ 
         <section class="page-section" id="services">
             <div class="container px-4 px-lg-5">
                 <h2 class="text-center mt-0">Serviços</h2>
@@ -126,14 +124,14 @@ mysqli_close($connect);
                 </div>
             </div>
         </section>
-        <!-- Call to action-->
+
         <section class="page-section bg-primary text-white" id="compra">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">Adquira já o seu <br> Water Leak Detector!</h2>
                 <a class="btn btn-light btn-xl" href="./sistema/loja.php">Comprar agora</a>
             </div>
         </section>
-        <!-- Contact-->
+      
         <section class="page-section" id="contact">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -148,24 +146,22 @@ mysqli_close($connect);
                         <form id="cad-duv-form">
                             <span id="msgAlertaErroCad"></span>
                             <span id="msgAlerta"></span>
-                            <!-- Name input-->
+                            
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="nome_form" type="text" placeholder="Informe seu nome." name="nome_form"/>
                                 <label for="name">Nome</label>
                             </div>
-                            <!-- Email address input-->
+                           
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="email_form" type="email" placeholder="name@example.com" name="email_form"/>
                                 <label for="email">E-mail</label>
                             </div>
-                            <!-- Phone number input-->
                             
                             <div class="form-floating mb-3">
                                 <input class="form-control" type="tel" placeholder="(11) 99456-7890" name="telefone_form" id="telefone_form" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"/>
                                 <label for="phone">Celular</label>
                             </div>
                             
-                            <!-- Message input-->
                             <div class="form-floating mb-3">
                                 <textarea class="form-control" id="duvida_form" type="text" placeholder="Enter your message here..." style="height: 10rem"  name="duvida_form"></textarea>
                                 <label for="message">Dúvidas ou Sugestões</label>
@@ -177,12 +173,12 @@ mysqli_close($connect);
                 </div>
             </div>
         </section>
-        <!-- Footer-->
+     
         <footer class="sticky-footer bg-light py-5">
             <div class="copyright text-center my-auto">Aatstech Corporation &copy; Copyright</div>
         </footer>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- SimpleLightbox plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>                            
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
