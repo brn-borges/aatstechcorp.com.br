@@ -8,33 +8,8 @@ $id_user = $_SESSION['id_user'];
 $sql = "SELECT * FROM user WHERE id_user = '$id_user'";
 $resultado = mysqli_query($connect, $sql);
 $dados = mysqli_fetch_array($resultado);
+mysqli_close($connect);
 
-// Botão enviar
-if(isset($_POST['btn-duvida'])):
-    $erros = array();
-    $msg = array();
-    $nome_form = mysqli_escape_string($connect, $_POST['nome_form']);
-    $email_form = mysqli_escape_string($connect, $_POST['email_form']);
-    $telefone_form = mysqli_escape_string($connect, $_POST['telefone_form']);
-    $duvida_form = mysqli_escape_string($connect, $_POST['duvida_form']);
-
-    if(empty($nome_form) or empty($telefone_form) or empty($email_form) or empty($duvida_form)):
-        $erros[] = "Há campos que precisam ser preenchido!";
-    else: 
-        $sql = "INSERT INTO form (nome_form, email_form, telefone_form, duvida_form) VALUES ('$nome_form', '$email_form','$telefone_form', '$duvida_form')";
-        /*if (mysqli_query($conn, $sql)) {
-            echo "New record created successfully";
-        }else{
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }*/
-        
-        mysqli_query($connect, $sql);
-        $msg [] =  "Recebemos a sua solicitação! <br> Em breve entraremos em contato!";
-        mysqli_close($connect);
-        session_unset();
-        session_destroy();
-    endif;
-endif;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -166,49 +141,37 @@ endif;
                         <h2 class="mt-0">Possua alguma Dúvida ou Sugestão?</h2>
                         <hr class="divider" />
                         <p class="text-muted mb-5">Você possui dúvida ou sugestão? Envie-nos uma mensagem e entraremos em contato com você o mais breve possível!</p>
-                        <?php
-                                    if(!empty($erros)):
-                                        foreach($erros as $erro):
-                                            header('Location:index.php#contact');
-                                        echo "<h6 style='color: red;'>". $erro ."</h6>";
-                                        endforeach;
-                                    endif;
-                                    if(!empty($msg)):
-                                        foreach($msg as $info):
-                                        echo "<h6 style='color: black;'>". $info ."</h6>";
-                                        endforeach;
-                                    endif;
-                        ?>
                     </div>
                 </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center mb-3 duvida">
+                <div class="row gx-4 gx-lg-5 justify-content-center mb-3">
                     <div class="col-lg-6">
-                        <form id="contactForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" >
+                        <form id="cad-duv-form">
+                            <span id="msgAlertaErroCad"></span>
+                            <span id="msgAlerta"></span>
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Informe seu nome." name="nome_form"/>
+                                <input class="form-control" id="nome_form" type="text" placeholder="Informe seu nome." name="nome_form"/>
                                 <label for="name">Nome</label>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" name="email_form"/>
+                                <input class="form-control" id="email_form" type="email" placeholder="name@example.com" name="email_form"/>
                                 <label for="email">E-mail</label>
                             </div>
                             <!-- Phone number input-->
                             
                             <div class="form-floating mb-3">
-                                <input class="form-control" type="tel" placeholder="(11) 99456-7890" name="telefone_form" id="cel"/>
+                                <input class="form-control" type="tel" placeholder="(11) 99456-7890" name="telefone_form" id="telefone_form" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"/>
                                 <label for="phone">Celular</label>
-
                             </div>
-                            <script type="text/javascript">$("#cel").mask("(00) 00000-0000");</script>
+                            
                             <!-- Message input-->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem"  name="duvida_form"></textarea>
+                                <textarea class="form-control" id="duvida_form" type="text" placeholder="Enter your message here..." style="height: 10rem"  name="duvida_form"></textarea>
                                 <label for="message">Dúvidas ou Sugestões</label>
                                 <div class="invalid-feedback">Por gentileza insira a sua Dúvida ou Sugestão!</div>
                             </div>
-                            <div class="d-grid"><button class="btn btn-primary btn-xl " type="submit" name="btn-duvida">Enviar</button></div>
+                            <div class="d-grid"><input class="btn btn-primary btn-xl " type="submit" id="cad-duv-btn" value="Enviar"></div>
                         </form>
                     </div>
                 </div>
@@ -222,5 +185,7 @@ endif;
         <!-- SimpleLightbox plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>                            
         <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="sistema/js/index-duvida.js"></script>
     </body>
 </html>
