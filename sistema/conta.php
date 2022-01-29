@@ -432,11 +432,11 @@ mysqli_close($connect);
                         </div>
                         <div class="mb-3">
                             <label for="senha" class="col-form-label">Senha: </label>
-                            <input type="password" name="senha_user" class="form-control" id="senha_user" placeholder="Senha"></input>
+                            <input type="password" name="senha_user" class="form-control" id="senha_user" placeholder="Senha">
                         </div>
                         <div class="mb-3">
                             <label for="senha" class="col-form-label">Repetir Senha: </label>
-                            <input type="password" name="senha_repetir" class="form-control" id="senha_repetir" placeholder="Repetir Senha"></input>
+                            <input type="password" name="senha_repetir" class="form-control" id="senha_repetir" placeholder="Repetir Senha">
                         </div>
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-outline-success btn-sm" id="cad-conta-btn" value="Cadastrar" />
@@ -449,7 +449,7 @@ mysqli_close($connect);
         </div>
     </div>
 
-    <<script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
