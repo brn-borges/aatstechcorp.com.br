@@ -368,28 +368,19 @@ mysqli_close($connect);
                     <form id="edit-perfil-form">
                         <span id="msgAlertaErroEdit"></span>
                         <span id="msgAlerta"></span>
-                        <input type="hidden" name="id_user" id="editIdUser">
+                        <input type="hidden" name="id_user" id="editIdPerfil">
                         <div class="mb-3">
                             
                             <label for="nome" class="col-form-label">Nome:</label>
-                            <input type="text" name="nome_user" class="form-control" id="editNomeUser" placeholder="Nome Completo">
-                        </div>
-                        <div class="mb-3">
-                            <label for="cel" class="col-form-label">Celular:</label>
-                            <input type="cel" name="telefone_user" class="form-control" id="editTelefoneUser" placeholder="Celular" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
-                            
-                        </div>
-                        <div class="mb-3">
-                            <label for="Email" class="col-form-label">E-mail:</label>
-                            <input type="email" name="email_user" class="form-control" id="editEmailUser" placeholder="E-mail">
+                            <input type="text" name="nome_user" class="form-control" id="editNomePerfil" placeholder="Nome Completo">
                         </div>
                         <div class="mb-3">
                             <label for="senha" class="col-form-label">Senha: </label>
-                            <input type="password" name="senha_user" class="form-control" id="editSenhaUser" placeholder="Senha">
+                            <input type="password" name="senha_user" class="form-control" id="editSenhaPerfil" placeholder="Senha">
                         </div>
                         <div class="mb-3">
                             <label for="senha" class="col-form-label">Repetir Senha: </label>
-                            <input type="password" name="senha_repetir" class="form-control" id="editSenhaRepetir" placeholder="Repetir Senha">
+                            <input type="password" name="senha_repetir" class="form-control" id="editSenhaRepetirPerfil" placeholder="Repetir Senha">
                         </div>
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-outline-success btn-sm" id="edit-conta-btn" value="Alterar" />
@@ -495,44 +486,36 @@ mysqli_close($connect);
         </div>
     </div>
 
-    <div class="modal fade" id="editContaModal" tabindex="-1" aria-labelledby="editContaModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editarContaModal" tabindex="-1" aria-labelledby="editarContaModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editContaModalLabel">Editar Conta</h5>
+                    <h5 class="modal-title" id="editarContaModalLabel">Editar Conta</h5>
                     <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="edit-conta-form">
-                        <span id="msgAlertaErroEdit"></span>
+                    <form id="edit-contas-form">
+                        <span id="msgAlertaErroEditar"></span>
                         <span id="msgAlerta"></span>
-                        <input type="hidden" name="id_user" id="editIdUser">
+                        <input type="hidden" name="id_user" id="editarIdUser">
                         <div class="mb-3">
                             
                             <label for="nome" class="col-form-label">Nome:</label>
-                            <input type="text" name="nome_user" class="form-control" id="editNomeUser" placeholder="Nome Completo">
+                            <input type="text" name="nome_user" class="form-control" id="editarNomeUser" placeholder="Nome Completo">
                         </div>
                         <div class="mb-3">
                             <label for="cel" class="col-form-label">Celular:</label>
-                            <input type="cel" name="telefone_user" class="form-control" id="editTelefoneUser" placeholder="Celular" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                            <input type="cel" name="telefone_user" class="form-control" id="editarTelefoneUser" placeholder="Celular" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                             
                         </div>
                         <div class="mb-3">
                             <label for="Email" class="col-form-label">E-mail:</label>
-                            <input type="email" name="email_user" class="form-control" id="editEmailUser" placeholder="E-mail">
-                        </div>
-                        <div class="mb-3">
-                            <label for="senha" class="col-form-label">Senha: </label>
-                            <input type="password" name="senha_user" class="form-control" id="editSenhaUser" placeholder="Senha">
-                        </div>
-                        <div class="mb-3">
-                            <label for="senha" class="col-form-label">Repetir Senha: </label>
-                            <input type="password" name="senha_repetir" class="form-control" id="editSenhaRepetir" placeholder="Repetir Senha">
+                            <input type="email" name="email_user" class="form-control" id="editarEmailUser" placeholder="E-mail">
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" class="btn btn-outline-success btn-sm" id="edit-conta-btn" value="Alterar" />
+                            <input type="submit" class="btn btn-outline-success btn-sm" id="edit-contas-btn" value="Alterar" />
                             <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Cancelar</button>
                         </div>
                     </form>

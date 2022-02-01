@@ -1,8 +1,8 @@
 const listConta = document.querySelector(".listar-Conta");
 const cadForm = document.getElementById("cad-conta-form");
-const editForm = document.getElementById("edit-conta-form");
+const editarForm = document.getElementById("edit-contas-form");
 const msgAlertaErroCad = document.getElementById("msgAlertaErroCad");
-const msgAlertaErroEdit = document.getElementById("msgAlertaErroEdit");
+const msgAlertaErroEditar = document.getElementById("msgAlertaErroEditar");
 const msgAlerta = document.getElementById("msgAlerta");
 const cadModal = new bootstrap.Modal(document.getElementById("criarContaModal"));
 
@@ -117,23 +117,22 @@ cadForm.addEventListener("submit", async (e) => {
              msgAlerta.innerHTML = "";
          }, 5000)
      } else {
-         const editModal = new bootstrap.Modal(document.getElementById("editContaModal"));
+         const editModal = new bootstrap.Modal(document.getElementById("editarContaModal"));
          editModal.show();
-         document.getElementById("editIdUser").value = resposta['dados'].id_user;
-         document.getElementById("editNomeUser").value  = resposta['dados'].nome_user;
-         document.getElementById("editTelefoneUser").value  = resposta['dados'].telefone_user;
-         document.getElementById("editEmailUser").value  = resposta['dados'].email_user;
-         document.getElementById("editSenhaUser").value  = resposta['dados'].senha_user;
-         document.getElementById("editSenhaRepetir").value  = resposta['dados'].senha_user;
+         document.getElementById("editarIdUser").value = resposta['dados'].id_user;
+         document.getElementById("editarNomeUser").value  = resposta['dados'].nome_user;
+         document.getElementById("editarTelefoneUser").value  = resposta['dados'].telefone_user;
+         document.getElementById("editarEmailUser").value  = resposta['dados'].email_user;
+         
      }
  }
 
- editForm.addEventListener("submit", async (e) => {
+ editarForm.addEventListener("submit", async (e) => {
      e.preventDefault();
 
-     document.getElementById("edit-conta-btn").value = "Salvando...";
+     document.getElementById("edit-contas-btn").value = "Salvando...";
 
-     const dadosForm = new FormData(editForm);
+     const dadosForm = new FormData(editarForm);
      //console.log(dadosForm);
      /*for (var dadosFormEdit of dadosForm.entries()){
          console.log(dadosFormEdit[0] + " - " + dadosFormEdit[1]);
@@ -148,19 +147,19 @@ cadForm.addEventListener("submit", async (e) => {
      //console.log(resposta);
 
      if (resposta['erro']) {
-         msgAlertaErroEdit.innerHTML = resposta['msg'];
+         msgAlertaErroEditar.innerHTML = resposta['msg'];
          setTimeout(() => {
              msgAlertaErroEdit.innerHTML = "";
          }, 5000)
      } else {
-         msgAlertaErroEdit.innerHTML = resposta['msg'];
+         msgAlertaErroEditar.innerHTML = resposta['msg'];
          setTimeout(() => {
-             msgAlertaErroEdit.innerHTML = "";
+             msgAlertaErroEditar.innerHTML = "";
          }, 5000)
          listarConta(1);
      }
 
-    document.getElementById("edit-conta-btn").value = "Alterar";
+    document.getElementById("edit-contas-btn").value = "Alterar";
  });
 
 async function apagarConta(id_user) {

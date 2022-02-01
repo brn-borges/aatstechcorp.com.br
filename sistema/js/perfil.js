@@ -4,9 +4,9 @@
     const msgAlerta = document.getElementById("msgAlerta");
      msgAlertaErroEdit.innerHTML = "";
 
-    const dados = await fetch('contas/ver-conta.php?id_user=' + id_user);
+    const dados = await fetch('perfil/ver-conta.php?id_user=' + id_user);
     const resposta = await dados.json();
-     //console.log(resposta);
+     //console.log(resposta['dados'].senha_user);
 
      if (resposta['erro']) {
          msgAlerta.innerHTML = resposta['msg'];
@@ -16,12 +16,10 @@
      } else {
          const editModal = new bootstrap.Modal(document.getElementById("editPerfilModal"));
          editModal.show();
-         document.getElementById("editIdUser").value = resposta['dados'].id_user;
-         document.getElementById("editNomeUser").value  = resposta['dados'].nome_user;
-         document.getElementById("editTelefoneUser").value  = resposta['dados'].telefone_user;
-         document.getElementById("editEmailUser").value  = resposta['dados'].email_user;
-         document.getElementById("editSenhaUser").value  = resposta['dados'].senha_user;
-         document.getElementById("editSenhaRepetir").value  = resposta['dados'].senha_user;
+         document.getElementById("editIdPerfil").value = resposta['dados'].id_user;
+         document.getElementById("editNomePerfil").value  = resposta['dados'].nome_user;
+         document.getElementById("editSenhaPerfil").value  = resposta['dados'].senha_user;
+         document.getElementById("editSenhaRepetirPerfil").value  = resposta['dados'].senha_user;
      }
  }
 
@@ -37,7 +35,7 @@ document.getElementById("edit-perfil-form").addEventListener("submit", async (e)
          console.log(dadosFormEdit[0] + " - " + dadosFormEdit[1]);
      }*/
 
-     const dados = await fetch("contas/editar-conta.php", {
+     const dados = await fetch("perfil/editar-conta.php", {
          method: "POST",
          body: dadosForm
      });
@@ -57,7 +55,7 @@ document.getElementById("edit-perfil-form").addEventListener("submit", async (e)
          }, 5000)
      }
 
-    document.getElementById("edit-conta-btn").value = "Alterar";
+    document.getElementById("edit-perfil-btn").value = "Alterar";
  });
 
 
