@@ -12,7 +12,7 @@ $id_form = filter_input(INPUT_GET, "id_form", FILTER_SANITIZE_NUMBER_INT);
 
 if (!empty($id_form)) {
 
-    $query_duvida = "SELECT id_form, nome_form, email_form, telefone_form, duvida_form FROM form WHERE id_form =:id_form LIMIT 1";
+    $query_duvida = "SELECT id_form, nome_form, email_form, telefone_form, duvida_form, resposta_form FROM form WHERE id_form =:id_form LIMIT 1";
     $result_duvida = $conn->prepare($query_duvida);
     $result_duvida->bindParam(':id_form', $id_form);
     $result_duvida->execute();

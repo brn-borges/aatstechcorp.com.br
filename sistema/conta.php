@@ -12,19 +12,7 @@ endif;
 
 //Dados
 $id_user = $_SESSION['id_user'];
-$sql = "SELECT * FROM user WHERE id_user = '$id_user'";
-$resultado = mysqli_query($connect, $sql);
-$dados = mysqli_fetch_array($resultado);
 
-$sql = "SELECT * FROM user ";
-$contascriadas = mysqli_query($connect, $sql);
-
-
-$sql = "SELECT COUNT(id_user) AS total FROM user";
-$qtdeuser = mysqli_query($connect, $sql);
-$qtde = mysqli_fetch_assoc($qtdeuser);
-
-mysqli_close($connect);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -290,7 +278,7 @@ mysqli_close($connect);
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $dados['nome_user']; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><span id='userId' class="perfil" id="<?php echo json_encode($id_user); ?>"></span></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -366,8 +354,7 @@ mysqli_close($connect);
                 </div>
                 <div class="modal-body">
                     <form id="edit-perfil-form">
-                        <span id="msgAlertaErroEdit"></span>
-                        <span id="msgAlerta"></span>
+                        <span id="msgAlertaErroPerfil"></span>
                         <input type="hidden" name="id_user" id="editIdPerfil">
                         <div class="mb-3">
                             
@@ -375,7 +362,7 @@ mysqli_close($connect);
                             <input type="text" name="nome_user" class="form-control" id="editNomePerfil" placeholder="Nome Completo">
                         </div>
                         <div class="mb-3">
-                            <label for="senha" class="col-form-label">Senha: </label>
+                            <label for="senha" class="col-form-label">Nova Senha: </label>
                             <input type="password" name="senha_user" class="form-control" id="editSenhaPerfil" placeholder="Senha">
                         </div>
                         <div class="mb-3">

@@ -49,6 +49,7 @@ cadForm.addEventListener("submit", async (e) => {
             setTimeout(() => {
                 msgAlerta.innerHTML = "";
             }, 5000)
+            document.getElementById("cad-duv-btn").value = "Enviar";
             cadForm.reset();
             cadModal.hide();
         }

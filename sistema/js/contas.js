@@ -105,7 +105,7 @@ cadForm.addEventListener("submit", async (e) => {
 }
 
  async function editConta(id_user) {
-     msgAlertaErroEdit.innerHTML = "";
+     msgAlertaErroEditar.innerHTML = "";
 
     const dados = await fetch('contas/ver-conta.php?id_user=' + id_user);
     const resposta = await dados.json();
@@ -149,7 +149,7 @@ cadForm.addEventListener("submit", async (e) => {
      if (resposta['erro']) {
          msgAlertaErroEditar.innerHTML = resposta['msg'];
          setTimeout(() => {
-             msgAlertaErroEdit.innerHTML = "";
+             msgAlertaErroEditar.innerHTML = "";
          }, 5000)
      } else {
          msgAlertaErroEditar.innerHTML = resposta['msg'];

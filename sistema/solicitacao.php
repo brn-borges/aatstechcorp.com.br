@@ -12,13 +12,6 @@ endif;
 
 //Dados
 $id_user = $_SESSION['id_user'];
-$sql = "SELECT * FROM user WHERE id_user = '$id_user'";
-$resultado = mysqli_query($connect, $sql);
-$dados = mysqli_fetch_array($resultado);
-
-$sql = "SELECT * FROM form ";
-$solicitacaocriadas = mysqli_query($connect, $sql);
-mysqli_close($connect);
 
 ?>
 <!DOCTYPE html>
@@ -287,7 +280,7 @@ mysqli_close($connect);
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $dados['nome_user']; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><span id='userId' class="perfil" id="<?php echo json_encode($id_user); ?>"></span></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -369,7 +362,7 @@ mysqli_close($connect);
                 </div>
                 <div class="modal-body">
                     <form id="edit-perfil-form">
-                        <span id="msgAlertaErroEdit"></span>
+                        <span id="msgAlertaErroPerfil"></span>
                         <span id="msgAlerta"></span>
                         <input type="hidden" name="id_user" id="editIdPerfil">
                         <div class="mb-3">
@@ -378,7 +371,7 @@ mysqli_close($connect);
                             <input type="text" name="nome_user" class="form-control" id="editNomePerfil" placeholder="Nome Completo">
                         </div>
                         <div class="mb-3">
-                            <label for="senha" class="col-form-label">Senha: </label>
+                            <label for="senha" class="col-form-label">Nova Senha: </label>
                             <input type="password" name="senha_user" class="form-control" id="editSenhaPerfil" placeholder="Senha">
                         </div>
                         <div class="mb-3">
@@ -426,7 +419,7 @@ mysqli_close($connect);
                     <span id="msgAlerta"></span>
                     <dl class="row">
                         <dt class="col-sm-3">Protocolo</dt>
-                        <dd class="col-sm-9"><span id="idDuvida"></span></dd>
+                        <dd class="col-sm-9"><span class="idResponder" id="idDuvida"></span></dd>
 
                         <dt class="col-sm-3">Nome</dt>
                         <dd class="col-sm-9"><span id="nomeDuvida"></span></dd>
@@ -441,6 +434,49 @@ mysqli_close($connect);
                         <dd class="col-sm-9"><span id="duvidaDuvida"></span></dd>
 
                     </dl>
+                        <div class="modal-footer">
+                             <button type="submit" class="btn btn-outline-dark btn-sm" id="id_form" onclick='ResponderDuvida()'>Responder</button>
+                            <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="ResponderDuvidaModal" tabindex="-1" aria-labelledby="ResponderDuvidaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ResponderDuvidaModalLabel">Responder da Dúvida ou Sugestão</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
+                </div>
+                <div class="modal-body">
+                    <span id="msgAlerta"></span>
+                    <dl class="row">
+                        <dt class="col-sm-3">Protocolo</dt>
+                        <dd class="col-sm-9"><span id="idResponder"></span></dd>
+
+                        <dt class="col-sm-3">Nome</dt>
+                        <dd class="col-sm-9"><span id="nomeResponder"></span></dd>
+
+                        <dt class="col-sm-3">Dúvida ou Sugestão</dt>
+                        <dd class="col-sm-9"><span id="duvidaResponder"></span></dd>
+
+                        <dt class="col-sm-3"></dt>
+                        <dd class="col-sm-9"></dd>
+
+                        <dt class="col-sm-3">Resposta</dt>
+                        <dd class="col-sm-9"></dd>
+                    </dl>
+                    <form id="reposta-form">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="respostaDuvida" type="text" placeholder="Responda aqui a Dúvida!" style="height: 10rem"  name="resposta_form"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                        <input type="submit" class="btn btn-outline-dark btn-sm" id="btn-responder-duvida" value="Enviar" />
+                         <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Cancelar</button>        
+                    </div>
+                    </form>
                 </div>
 
             </div>

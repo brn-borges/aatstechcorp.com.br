@@ -12,9 +12,6 @@ endif;
 
 //Dados
 $id_user = $_SESSION['id_user'];
-$sql = "SELECT * FROM user WHERE id_user = '$id_user'";
-$resultado = mysqli_query($connect, $sql);
-$dados = mysqli_fetch_array($resultado);
 
 $sql = "SELECT COUNT(id_form) AS total FROM form";
 $qtdeduvida = mysqli_query($connect, $sql);
@@ -303,7 +300,7 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, <?php echo $dados['nome_user'] . "!"; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, <span id='userId' class="perfil" id="<?php echo json_encode($id_user); ?>"></span></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -527,7 +524,7 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
                 </div>
                 <div class="modal-body">
                     <form id="edit-perfil-form">
-                        <span id="msgAlertaErroEdit"></span>
+                        <span id="msgAlertaErroPerfil"></span>
                         <span id="msgAlerta"></span>
                         <input type="hidden" name="id_user" id="editIdPerfil">
                         <div class="mb-3">
@@ -537,7 +534,7 @@ $qtde = mysqli_fetch_assoc($qtdeduvida);
                         </div>
                         
                         <div class="mb-3">
-                            <label for="senha" class="col-form-label">Senha: </label>
+                            <label for="senha" class="col-form-label">Nova Senha: </label>
                             <input type="password" name="senha_user" class="form-control" id="editSenhaPerfil" placeholder="Senha">
                         </div>
                         <div class="mb-3">

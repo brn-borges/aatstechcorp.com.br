@@ -38,6 +38,8 @@ if (!empty($pagina)) {
                     <td>$telefone_form</td>
                     <td>
                         <button id='$id_form' class='btn btn-outline-dark btn-sm' onclick='visDuvida($id_form)'>Visualizar</button>
+
+                        <button id='$id_form' class='btn btn-outline-dark btn-sm' onclick='ResponderDuvida($id_form)'>Responder</button>
                         
                         <button id='$id_form' class='btn btn-outline-danger btn-sm' onclick='apagarDuvida($id_form)'>Apagar</button>
                     </td>

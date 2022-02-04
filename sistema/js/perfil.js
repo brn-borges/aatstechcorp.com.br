@@ -1,8 +1,22 @@
+const Perfil = document.querySelector(".perfil");
+let userId = (document.querySelector('#userId').attributes[2].name).slice(0,2)
+
+const PerfilAtual = async (id_user) => {
+  const dados = await fetch('perfil/ver-conta.php?id_user=' + id_user);
+  const resposta = await dados.json()
+  //console.log(resposta.dados)
+  Perfil.innerHTML = resposta['dados'].nome_user;
+  
+}
+
+PerfilAtual(userId);
+ 
+ 
  async function editPerfil(id_user) {
    
-    const msgAlertaErroEdit = document.getElementById("msgAlertaErroEdit");
+    const msgAlertaErroPerfil = document.getElementById("msgAlertaErroPerfil");
     const msgAlerta = document.getElementById("msgAlerta");
-     msgAlertaErroEdit.innerHTML = "";
+    msgAlertaErroPerfil.innerHTML = "";
 
     const dados = await fetch('perfil/ver-conta.php?id_user=' + id_user);
     const resposta = await dados.json();
@@ -18,8 +32,8 @@
          editModal.show();
          document.getElementById("editIdPerfil").value = resposta['dados'].id_user;
          document.getElementById("editNomePerfil").value  = resposta['dados'].nome_user;
-         document.getElementById("editSenhaPerfil").value  = resposta['dados'].senha_user;
-         document.getElementById("editSenhaRepetirPerfil").value  = resposta['dados'].senha_user;
+         document.getElementById("editSenhaPerfil").value  = (!resposta['dados'].senha_user && '');
+         document.getElementById("editSenhaRepetirPerfil").value  = (!resposta['dados'].senha_user && '');
      }
  }
 
@@ -44,18 +58,19 @@ document.getElementById("edit-perfil-form").addEventListener("submit", async (e)
      //console.log(resposta);
 
      if (resposta['erro']) {
-         msgAlertaErroEdit.innerHTML = resposta['msg'];
+      msgAlertaErroPerfil.innerHTML = resposta['msg'];
          setTimeout(() => {
-             msgAlertaErroEdit.innerHTML = "";
+          msgAlertaErroPerfil.innerHTML = "";
          }, 5000)
      } else {
-         msgAlertaErroEdit.innerHTML = resposta['msg'];
+      msgAlertaErroPerfil.innerHTML = resposta['msg'];
          setTimeout(() => {
-             msgAlertaErroEdit.innerHTML = "";
+             msgAlertaErroPerfil.innerHTML = "";
          }, 5000)
+         PerfilAtual(userId)
      }
 
-    document.getElementById("edit-perfil-btn").value = "Alterar";
+    document.getElementById("edit-conta-btn").value = "Alterar";
  });
 
 

@@ -59,7 +59,7 @@ cadForm.addEventListener("submit", async (e) => {
              setTimeout(() => {
                  msgAlerta.innerHTML = "";
             }, 5000)
-           
+             document.getElementById("cad-usuario-btn").value = "Cadastrar";
              cadForm.reset();
              cadModal.hide();
 
