@@ -1,6 +1,7 @@
 const listDuvida = document.querySelector(".listar-Duvida");
 const msgAlerta = document.getElementById("msgAlerta");
-const respDuvida = document.getElementById('reposta-form');
+const respDuvida = document.getElementById('cad-resposta-form');
+const msgAlertaErroResposta = document.getElementById("msgAlertaErroResposta");
 
 const listarDuvida = async (pagina) => {
     const dados = await fetch("duvidas/exibir-duvida.php?pagina=" + pagina);
@@ -35,7 +36,7 @@ async function visDuvida(id_form) {
 }
 
 async function ResponderDuvida(id_form) {
-
+    
     if(!id_form){
         id_form = document.querySelector('.idResponder').innerHTML
         console.log(id_form)
@@ -46,48 +47,44 @@ async function ResponderDuvida(id_form) {
 
 
     if (resposta['erro']) {
-        msgAlerta.innerHTML = resposta['msg'];
+        msgAlertaErroResposta.innerHTML = resposta['msg'];
         setTimeout(() => {
-            msgAlerta.innerHTML = "";
+            msgAlertaErroResposta.innerHTML = "";
         }, 5000)
     } else {
-        const visModal = new bootstrap.Modal(document.getElementById("ResponderDuvidaModal"));
-        visModal.show();
+        const editModal = new bootstrap.Modal(document.getElementById("ResponderDuvidaModal"));
+        editModal.show();
 
         document.getElementById("idResponder").innerHTML = resposta['dados'].id_form;
+        document.getElementById("idResp").value = resposta['dados'].id_form;
         document.getElementById("nomeResponder").innerHTML = resposta['dados'].nome_form;
         document.getElementById("duvidaResponder").innerHTML = resposta['dados'].duvida_form;
-        document.getElementById("respostaDuvida").innerHTML = resposta['dados'].resposta_form;
+         var Resp = document.getElementById("respostaDuvida").value = resposta['dados'].resposta_form;
+
     }
 }
 
-respDuvida.addEventListener("submit", async (e) => {
+respDuvida.addEventListener("submit", async (e) =>  {
     e.preventDefault();
-
+    
     document.getElementById("btn-responder-duvida").value = "Salvando Resposta...";
 
-    const dadosForm = new FormData(editForm);
-    //console.log(dadosForm);
-    /*for (var dadosFormEdit of dadosForm.entries()){
-        console.log(dadosFormEdit[0] + " - " + dadosFormEdit[1]);
-    }*/
-
-    const dados = await fetch("editar.php", {
+    const dadosResposta = new FormData(respDuvida);
+    
+    const dados = await fetch("duvidas/resposta-duvida.php", {
         method: "POST",
-        body: dadosForm
+        body: dadosResposta
     });
 
-    const resposta = await dados.json();
-    //console.log(resposta);
+    const envio = await dados.json();
 
-    if (resposta['erro']) {
-        msgAlertaErroEdit.innerHTML = resposta['msg'];
+    if (envio['erro']) {
+        msgAlertaErroResposta.innerHTML = envio['msg'];
     } else {
-        msgAlertaErroEdit.innerHTML = resposta['msg'];
-        listarUsuarios(1);
+        msgAlertaErroResposta.innerHTML = envio['msg'];
     }
 
-    document.getElementById("btn-responder-duvida").value = "Salvar";
+    document.getElementById("btn-responder-duvida").value = "Enviar";
 });
 
 

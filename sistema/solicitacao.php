@@ -443,6 +443,10 @@ $id_user = $_SESSION['id_user'];
             </div>
         </div>
     </div>
+
+    
+
+
     <div class="modal fade" id="ResponderDuvidaModal" tabindex="-1" aria-labelledby="ResponderDuvidaModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -451,7 +455,7 @@ $id_user = $_SESSION['id_user'];
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
                 </div>
                 <div class="modal-body">
-                    <span id="msgAlerta"></span>
+                   <span id="msgAlertaErroResposta"></span>
                     <dl class="row">
                         <dt class="col-sm-3">Protocolo</dt>
                         <dd class="col-sm-9"><span id="idResponder"></span></dd>
@@ -468,14 +472,15 @@ $id_user = $_SESSION['id_user'];
                         <dt class="col-sm-3">Resposta</dt>
                         <dd class="col-sm-9"></dd>
                     </dl>
-                    <form id="reposta-form">
-                        <div class="form-floating mb-3">
+                    <form id="cad-resposta-form">
+                        <input type="hidden" id="idResp" name="id_form">
+                        <div class="mb-3">
                             <textarea class="form-control" id="respostaDuvida" type="text" placeholder="Responda aqui a Dúvida!" style="height: 10rem"  name="resposta_form"></textarea>
                         </div>
                         <div class="modal-footer">
-                        <input type="submit" class="btn btn-outline-dark btn-sm" id="btn-responder-duvida" value="Enviar" />
-                         <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Cancelar</button>        
-                    </div>
+                            <input type="submit" class="btn btn-outline-dark btn-sm" id="btn-responder-duvida" value="Enviar" />
+                            <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Cancelar</button>        
+                        </div>
                     </form>
                 </div>
 
