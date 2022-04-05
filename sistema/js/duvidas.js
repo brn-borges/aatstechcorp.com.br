@@ -70,13 +70,12 @@ respDuvida.addEventListener("submit", async (e) =>  {
     document.getElementById("btn-responder-duvida").value = "Salvando Resposta...";
 
     const dadosResposta = new FormData(respDuvida);
-    //console.log(dadosResposta)
+    console.log(dadosResposta)
     const dados = await fetch("duvidas/resposta-duvida.php", {
         method: "POST",
         body: dadosResposta
     });
-    console.log(dados)
-
+    
      const envio = await dados.json();
      if (envio['erro']) {
          msgAlertaErroResposta.innerHTML = envio['msg'];
