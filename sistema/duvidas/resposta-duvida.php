@@ -18,9 +18,11 @@ if(empty($dados['id_form'])) {
 } else {
     $query_duvida= "UPDATE form SET resposta_form=:resposta_form WHERE id_form=:id_form";
 
-    $edit_duvida = $conn->prepare($query_duvida, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+    $edit_duvida = $conn->prepare($query_duvida);
+    $edit_duvida->bindParam(':resposta_form', $dados['resposta_form']);
+    $edit_duvida->bindParam(':id_form', $dados['id_form']);
 
-    if ($edit_duvida->execute(array("resposta_form" => $dados["resposta_form"], "id_form" => $dados["id_form"]))) {
+    if ($edit_duvida->execute()) {
         $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Dúvida ou Sugestão Respondida com sucesso!</div>"];
     } else {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Falha ao responder a Dúvida ou Sugestão!</div>"];

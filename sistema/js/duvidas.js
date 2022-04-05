@@ -55,10 +55,10 @@ async function ResponderDuvida(id_form) {
         const editModal = new bootstrap.Modal(document.getElementById("ResponderDuvidaModal"));
         editModal.show();
 
-        //document.getElementById("idResponder").innerHTML = resposta['dados'].id_form;
+        document.getElementById("idResponder").innerHTML = resposta['dados'].id_form;
         document.getElementById("idResp").value = resposta['dados'].id_form;
-        document.getElementById("nomeResponder").value = resposta['dados'].nome_form;
-        document.getElementById("duvidaResponder").value = resposta['dados'].duvida_form;
+        document.getElementById("nomeResponder").innerHTML = resposta['dados'].nome_form;
+        document.getElementById("duvidaResponder").innerHTML = resposta['dados'].duvida_form;
         document.getElementById("respostaDuvida").value = resposta['dados'].resposta_form;
 
     }
@@ -77,14 +77,14 @@ respDuvida.addEventListener("submit", async (e) =>  {
     });
     console.log(dados)
 
-    // const envio = await dados.json();
-    // if (envio['erro']) {
-    //     msgAlertaErroResposta.innerHTML = envio['msg'];
-    // } else {
-    //     msgAlertaErroResposta.innerHTML = envio['msg'];
-    // }
+     const envio = await dados.json();
+     if (envio['erro']) {
+         msgAlertaErroResposta.innerHTML = envio['msg'];
+     } else {
+         msgAlertaErroResposta.innerHTML = envio['msg'];
+     }
 
-    // document.getElementById("btn-responder-duvida").value = "Enviar";
+     document.getElementById("btn-responder-duvida").value = "Enviar";
 });
 
 

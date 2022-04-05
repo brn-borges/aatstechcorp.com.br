@@ -455,36 +455,26 @@ $id_user = $_SESSION['id_user'];
                 </div>
                 <div class="modal-body">
                    <span id="msgAlertaErroResposta"></span>
-                    <!-- <dl class="row">
-                        <dt class="col-sm-3">Protocolo</dt>
+                    <dl class="row">
+                        <dt class="col-sm-3">Protocolo:</dt>
                         <dd class="col-sm-9"><span id="idResponder"></span></dd>
 
-                        <dt class="col-sm-3">Nome</dt>
+                        <dt class="col-sm-3">Nome:</dt>
                         <dd class="col-sm-9"><span id="nomeResponder"></span></dd>
 
-                        <dt class="col-sm-3">Dúvida ou Sugestão</dt>
+                        <dt class="col-sm-3">Dúvida ou Sugestão:</dt>
                         <dd class="col-sm-9"><span id="duvidaResponder"></span></dd>
 
                         <dt class="col-sm-3"></dt>
                         <dd class="col-sm-9"></dd>
 
-                        <dt class="col-sm-3">Resposta</dt>
-                        <dd class="col-sm-9"></dd>
-                    </dl> -->
+                        <dt class="col-sm-3">Resposta:</dt>
+                       
+                    </dl>
                     <form id="cad-resposta-form">
                         <input type="hidden" id="idResp" name="id_form">
-                        <div class="form-floating mb-3">
-                            <label for="name">Nome</label>
-                            <input class="form-control" id="nomeResponder" type="text" placeholder="Informe seu nome." name="nome_form"/>
-                                
-                        </div>                    
-                            <div class="form-floating mb-3">
-                                <label for="message">Dúvidas ou Sugestões</label>
-                                <textarea class="form-control" id="duvidaResponder" type="text" placeholder="Enter your message here..." style="height: 10rem"  name="duvida_form"></textarea>
-                                <div class="invalid-feedback">Por gentileza insira a sua Dúvida ou Sugestão!</div>
-                            </div>
+                        
                         <div class="mb-3">
-                        <label for="message">Resposta</label>
                             <textarea class="form-control" id="respostaDuvida" type="text" placeholder="Responda aqui a Dúvida!" style="height: 10rem"  name="resposta_form"></textarea>
                         </div>
                         
