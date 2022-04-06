@@ -39,7 +39,7 @@ async function ResponderDuvida(id_form) {
     
     if(!id_form){
         id_form = document.querySelector('.idResponder').innerHTML
-        console.log(id_form)
+        //console.log(id_form)
     }
 
     const dados = await fetch('duvidas/ver-duvida.php?id_form=' + id_form);
@@ -56,9 +56,9 @@ async function ResponderDuvida(id_form) {
         editModal.show();
 
         document.getElementById("idResponder").innerHTML = resposta['dados'].id_form;
-        document.getElementById("idResp").value = resposta['dados'].id_form;
         document.getElementById("nomeResponder").innerHTML = resposta['dados'].nome_form;
         document.getElementById("duvidaResponder").innerHTML = resposta['dados'].duvida_form;
+        document.getElementById("idResp").value = resposta['dados'].id_form;
         document.getElementById("respostaDuvida").value = resposta['dados'].resposta_form;
 
     }
@@ -70,7 +70,7 @@ respDuvida.addEventListener("submit", async (e) =>  {
     document.getElementById("btn-responder-duvida").value = "Salvando Resposta...";
 
     const dadosResposta = new FormData(respDuvida);
-    console.log(dadosResposta)
+    
     const dados = await fetch("duvidas/resposta-duvida.php", {
         method: "POST",
         body: dadosResposta
@@ -88,7 +88,7 @@ respDuvida.addEventListener("submit", async (e) =>  {
 
 
 
- async function apagarDuvida(id_form) {
+async function apagarDuvida(id_form) {
 
     var confirmar = confirm("Tem certeza que deseja excluir o registro selecionado?");
 

@@ -134,8 +134,7 @@ editForm.addEventListener("submit", async (e) => {
     });
 
     const resposta = await dados.json();
-    //console.log(resposta);
-
+    
     if (resposta['erro']) {
         msgAlertaErroEditProd.innerHTML = resposta['msg'];
         setTimeout(() => {

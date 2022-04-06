@@ -450,7 +450,7 @@ $id_user = $_SESSION['id_user'];
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ResponderDuvidaModalLabel">Responder da Dúvida ou Sugestão</h5>
+                    <h5 class="modal-title" id="ResponderDuvidaModalLabel">Responder da Dúvida ou Sugestão </h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
                 </div>
                 <div class="modal-body">
